@@ -65,7 +65,7 @@
     <Compile Include="AutofacInitializer.cs" />
     <Compile Include="Contexts\ConfigContext.cs" />
     <Compile Include="DomainObjects\Fork.cs" />
-    <Compile Include="DomainObjects\PhilosophersRestaurant.cs" />
+    <Compile Include="DomainObjects\Restaurant.cs" />
     <Compile Include="DomainObjects\MealWaiter.cs" />
     <Compile Include="Contexts\PhilosopherStatisticContext.cs" />
     <Compile Include="Mono.Options\Options.cs" />

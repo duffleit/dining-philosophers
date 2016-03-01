@@ -10,7 +10,7 @@ namespace DiningPhilosophers
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<Application>().AsSelf();
-            containerBuilder.RegisterType<PhilosophersRestaurant>().As<IPhilosophersRestaurant>();
+            containerBuilder.RegisterType<Restaurant>().As<IRestaurant>();
             containerBuilder.RegisterType<PhilosopherFactory>().As<IPhilosopherFactory>();
             containerBuilder.RegisterType<ForkFactory>().As<IForkFactory>();
             containerBuilder.RegisterType<MealWaiter>().As<IMealWaiter>();

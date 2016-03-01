@@ -6,22 +6,22 @@ namespace DiningPhilosophers
 {
     public class Application
     {
-        private readonly IPhilosophersRestaurant _philosophersRestaurant;
+        private readonly IRestaurant _restaurant;
         private readonly IPhilosopherStatisticContext _philosopherStatisticContext;
         private readonly ConfigContext _configProvider;
 
-        public Application(IPhilosophersRestaurant philosophersRestaurant, IPhilosopherStatisticContext philosopherStatisticContext, ConfigContext configProvider)
+        public Application(IRestaurant restaurant, IPhilosopherStatisticContext philosopherStatisticContext, ConfigContext configProvider)
         {
-            _philosophersRestaurant = philosophersRestaurant;
+            _restaurant = restaurant;
             _philosopherStatisticContext = philosopherStatisticContext;
             _configProvider = configProvider;
         }
 
         public void Start()
         {
-            _philosophersRestaurant.InviteRightHandPhilosophers(_configProvider.RightHandedPhilosophers);
-            _philosophersRestaurant.InviteLeftHandPhilosophers(_configProvider.LeftHandedPhilosophers);
-            _philosophersRestaurant.StartDinner();
+            _restaurant.InviteRightHandPhilosophers(_configProvider.RightHandedPhilosophers);
+            _restaurant.InviteLeftHandPhilosophers(_configProvider.LeftHandedPhilosophers);
+            _restaurant.StartDinner();
 
             PrintStatistics(_philosopherStatisticContext);
         }

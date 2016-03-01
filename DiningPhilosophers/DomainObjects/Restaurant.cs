@@ -3,22 +3,21 @@ using System.Linq;
 
 namespace DiningPhilosophers.DomainObjects
 {
-    public interface IPhilosophersRestaurant
+    public interface IRestaurant
     {
         void InviteLeftHandPhilosophers(int numberOfPhilosophers);
         void InviteRightHandPhilosophers(int numberOfPhilosophers);
         void StartDinner();
     }
 
-
-    public class PhilosophersRestaurant : IPhilosophersRestaurant
+    public class Restaurant : IRestaurant
     {
         private readonly IPhilosopherFactory _philosopherFactory;
         private readonly IForkFactory _forkFactory;
         private readonly IMealWaiter _mealWaiter;
         private readonly List<Philosopher> _philosophers;
 
-        public PhilosophersRestaurant(IPhilosopherFactory philosopherFactory, IForkFactory forkFactory, IMealWaiter mealWaiter)
+        public Restaurant(IPhilosopherFactory philosopherFactory, IForkFactory forkFactory, IMealWaiter mealWaiter)
         {
             _philosopherFactory = philosopherFactory;
             _forkFactory = forkFactory;
