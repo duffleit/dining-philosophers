@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Autofac;
+using DiningPhilosophers.Contexts;
 using DiningPhilosophers.Mono.Options;
 using DiningPhilosophers.Utils;
 
@@ -8,19 +9,29 @@ namespace DiningPhilosophers
     {
         static void Main(string[] args)
         {
-            int numberOfPhilosophers = 2, maxThinkingTime = 1000, maxEatingTime = 1000;
-            bool leftHanderPhilosopher = false;
+            int maxMealTime = 1*60*1000;
+            int numberOfPhilosophers = 5, maxThinkingTime = 10, maxEatingTime = 10;
+            bool containsLeftHandedPhilosopher = false;
 
             new OptionSet()
             {
                 {"n=", v => numberOfPhilosophers = v.ParseAsIntOrSetDefaul(numberOfPhilosophers)},
                 {"t1=", v => maxThinkingTime = v.ParseAsIntOrSetDefaul(maxThinkingTime)},
                 {"t2=", v => maxEatingTime = v.ParseAsIntOrSetDefaul(maxEatingTime)},
-                {"leftHanderPhilosopher", v =>  leftHanderPhilosopher = !string.IsNullOrEmpty(v)}
+                {"leftHandedPhilosopher", v =>  containsLeftHandedPhilosopher = !string.IsNullOrEmpty(v)}
             }.Parse(args);
 
-            var dinner = new PhilosophersDinner(maxThinkingTime, maxEatingTime);
-            dinner.Start(numberOfPhilosophers, leftHanderPhilosopher);          
+            var rightHandedPhilosophers = containsLeftHandedPhilosopher ? numberOfPhilosophers - 1 : numberOfPhilosophers;
+            var leftHandedPhilosophers = containsLeftHandedPhilosopher ? 1 : 0;
+
+            var iocContainer = new AutofacInitializer().GetContainer();
+            iocContainer.Resolve<ConfigContext>()
+                .SetTime(maxEatingTime, maxThinkingTime, maxMealTime)
+                .SetPhilosopherInfo(rightHandedPhilosophers, leftHandedPhilosophers);
+
+
+            var application = iocContainer.Resolve<Application>();
+            application.Start();
         }
     }
 }

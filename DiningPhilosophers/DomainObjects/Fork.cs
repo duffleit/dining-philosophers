@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace DiningPhilosophers.Entities
+namespace DiningPhilosophers.DomainObjects
 {
     public class Fork
     {
@@ -19,6 +19,20 @@ namespace DiningPhilosophers.Entities
             {
                 yield return new Fork(i);
             }
+        }
+    }
+
+    public interface IForkFactory
+    {
+        IEnumerable<Fork> GetForks(int count);
+    }
+
+    class ForkFactory : IForkFactory
+    {
+        private int _id = 0;
+        public IEnumerable<Fork> GetForks(int count)
+        {
+            for (var i = 0; i < count; i++) yield return new Fork(_id);
         }
     }
 }
