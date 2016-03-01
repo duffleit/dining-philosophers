@@ -22,7 +22,7 @@ namespace DiningPhilosophers
             _philosophersRestaurant.InviteRightHandPhilosophers(_configProvider.RightHandedPhilosophers);
             _philosophersRestaurant.InviteLeftHandPhilosophers(_configProvider.LeftHandedPhilosophers);
             _philosophersRestaurant.StartDinner();
-            _philosophersRestaurant.StopDinner();
+
             PrintStatistics(_philosopherStatisticContext);
         }
 

@@ -8,7 +8,6 @@ namespace DiningPhilosophers.DomainObjects
         void InviteLeftHandPhilosophers(int numberOfPhilosophers);
         void InviteRightHandPhilosophers(int numberOfPhilosophers);
         void StartDinner();
-        void StopDinner();
     }
 
 
@@ -50,11 +49,6 @@ namespace DiningPhilosophers.DomainObjects
             }
 
             _mealWaiter.WaitTillFinished();
-        }
-
-        public void StopDinner()
-        {
-            _mealWaiter.StopDinner();
         }
     }
 }

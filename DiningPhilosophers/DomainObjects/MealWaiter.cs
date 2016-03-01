@@ -10,7 +10,6 @@ namespace DiningPhilosophers.DomainObjects
     {
         void ServeMeal(Philosopher philosopher);
         void WaitTillFinished();
-        void StopDinner();
     }
 
 
@@ -74,13 +73,8 @@ namespace DiningPhilosophers.DomainObjects
         {
             if (!_threads.First().Join(_configContext.MaxMealTime))
             {
-                StopDinner();
+                foreach (var thread in _threads) thread.Abort();
             }
-        }
-
-        public void StopDinner()
-        {
-            foreach (var thread in _threads) thread.Abort();
         }
     }
 }

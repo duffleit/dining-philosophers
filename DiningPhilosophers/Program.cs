@@ -29,7 +29,6 @@ namespace DiningPhilosophers
                 .SetTime(maxEatingTime, maxThinkingTime, maxMealTime)
                 .SetPhilosopherInfo(rightHandedPhilosophers, leftHandedPhilosophers);
 
-
             var application = iocContainer.Resolve<Application>();
             application.Start();
         }
