@@ -29,7 +29,7 @@ namespace DiningPhilosophers
         private void PrintStatistics(IPhilosopherStatisticContext philosopherStatisticContext)
         {
             Console.WriteLine("*++++++++++++++++++++++++++++++++++++++++++++++");
-            Console.WriteLine("*Deadlocks: " + philosopherStatisticContext.HasDeadlock);
+            Console.WriteLine("*Deadlocks: " + philosopherStatisticContext.HasDeadlock + " @ "+ philosopherStatisticContext.FirstDeadlockOccured);
             Console.WriteLine("*++++++++++++++++++++++++++++++++++++++++++++++");
             Console.WriteLine("Ranks:");
             foreach (var philosopherStatistic in philosopherStatisticContext.EatRank)
